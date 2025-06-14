@@ -1,0 +1,97 @@
+// Modern PyCppSQLJS Example
+import math
+import json
+import http
+
+// Modern class with inheritance
+class User {
+    string name;
+    int age;
+    bool isActive;
+
+    // Constructor
+    User(string name, int age) {
+        this.name = name;
+        this.age = age;
+        this.isActive = true;
+    }
+
+    // Modern method with async/await
+    async def greet() {
+        return "Hello, " + this.name + "!";
+    }
+}
+
+// Modern class with inheritance
+class AdminUser extends User {
+    string role;
+
+    AdminUser(string name, int age, string role) {
+        super(name, age);
+        this.role = role;
+    }
+
+    async def getPermissions() {
+        return ["read", "write", "admin"];
+    }
+}
+
+// Modern function with type hints and async
+async def fetchData(string url) -> json {
+    response = await http.get(url);
+    return await response.json();
+}
+
+// Modern variable declarations with type inference
+var users = [
+    new User("Alice", 25),
+    new AdminUser("Bob", 30, "superadmin"),
+    new User("Carol", 28)
+];
+
+// Modern SQL-like query with async
+async def getActiveAdmins() {
+    admins = SELECT * FROM users 
+             WHERE isActive = true 
+             AND role = "admin";
+    return admins;
+}
+
+// Modern try-catch with async
+async def main() {
+    try {
+        // Modern for-of loop
+        for (user of users) {
+            greeting = await user.greet();
+            print(greeting);
+        }
+
+        // Modern SQL with async
+        activeAdmins = await getActiveAdmins();
+        print("Active admins:", activeAdmins);
+
+        // Modern API call
+        data = await fetchData("https://api.example.com/users");
+        print("API data:", data);
+
+    } catch (error) {
+        print("Error occurred:", error.message);
+    }
+}
+
+// Modern event handling
+onClick("refreshButton", async () => {
+    await main();
+});
+
+// Modern template literals
+string message = `Welcome to ${users.length} users!`;
+
+// Modern array methods
+var activeUsers = users.filter(user => user.isActive)
+                      .map(user => user.name);
+
+// Modern async IIFE
+(async () => {
+    await main();
+})(); 

@@ -1,0 +1,113 @@
+// Modern Language Features
+print("=== Modern Language Features ===");
+
+// 1. SQL-like Queries
+var users = [
+    {"name": "Alice", "age": 25, "role": "admin"},
+    {"name": "Bob", "age": 30, "role": "user"},
+    {"name": "Carol", "age": 22, "role": "admin"}
+];
+
+// Modern SQL query
+var admins = SELECT * FROM users WHERE role = "admin" AND age > 20;
+print("\nAdmins:", admins);
+
+// 2. Async/Await with Modern Syntax
+async def fetchUserData(string userId) -> json {
+    // Simulate API call
+    await sleep(1000);
+    return {
+        "id": userId,
+        "name": "John Doe",
+        "email": "john@example.com"
+    };
+}
+
+// 3. Modern Array Methods
+var numbers = [1, 2, 3, 4, 5];
+
+// Map
+var doubled = numbers.map(n => n * 2);
+print("\nDoubled numbers:", doubled);
+
+// Filter
+var evenNumbers = numbers.filter(n => n % 2 == 0);
+print("Even numbers:", evenNumbers);
+
+// Reduce
+var sum = numbers.reduce((acc, curr) => acc + curr, 0);
+print("Sum of numbers:", sum);
+
+// 4. Modern Object Features
+var person = {
+    name: "John",
+    age: 30,
+    // Computed property
+    get info() {
+        return `${this.name} (${this.age})`;
+    },
+    // Method shorthand
+    greet() {
+        return `Hello, I'm ${this.name}`;
+    }
+};
+
+// 5. Modern Error Handling
+try {
+    // Simulate an error
+    throw new Error("Something went wrong");
+} catch (error) {
+    print("\nError caught:", error.message);
+} finally {
+    print("Cleanup completed");
+}
+
+// 6. Modern Event Handling
+onClick("button", async () => {
+    var data = await fetchUserData("123");
+    print("User data:", data);
+});
+
+// 7. Modern Template Literals
+var name = "Alice";
+var age = 25;
+var message = `User ${name} is ${age} years old`;
+print("\nTemplate literal:", message);
+
+// 8. Modern Destructuring
+var {name, age} = person;
+print("Destructured:", name, age);
+
+// 9. Modern Spread Operator
+var arr1 = [1, 2, 3];
+var arr2 = [...arr1, 4, 5];
+print("\nSpread array:", arr2);
+
+var obj1 = {x: 1, y: 2};
+var obj2 = {...obj1, z: 3};
+print("Spread object:", obj2);
+
+// 10. Modern Optional Chaining
+var user = {
+    profile: {
+        address: {
+            city: "New York"
+        }
+    }
+};
+print("\nOptional chaining:", user?.profile?.address?.city);
+
+// 11. Modern Nullish Coalescing
+var username = null;
+var displayName = username ?? "Guest";
+print("Nullish coalescing:", displayName);
+
+// 12. Modern Async IIFE
+(async () => {
+    try {
+        var data = await fetchUserData("123");
+        print("\nAsync IIFE result:", data);
+    } catch (error) {
+        print("Error in IIFE:", error.message);
+    }
+})(); 

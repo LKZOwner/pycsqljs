@@ -1,0 +1,27 @@
+import math
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int x = 5;
+int y = add(x, 3);
+
+if (y > 5) {
+    print("y is greater than 5");
+} else {
+    print("y is not greater than 5");
+}
+
+for (int i = 0; i < 3; i = i + 1) {
+    print(i);
+}
+
+// SQL-like query
+users = [
+    {"name": "Alice", "age": 22},
+    {"name": "Bob", "age": 17},
+    {"name": "Carol", "age": 19}
+];
+adults = SELECT * FROM users WHERE age >= 18;
+print(adults); 

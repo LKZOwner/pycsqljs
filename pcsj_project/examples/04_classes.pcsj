@@ -1,0 +1,152 @@
+// Classes and Object-Oriented Features
+print("=== Classes and Object-Oriented Features ===");
+
+// 1. Basic Class
+class Person {
+    // Properties
+    string name;
+    int age;
+    bool isActive;
+
+    // Constructor
+    Person(string name, int age) {
+        this.name = name;
+        this.age = age;
+        this.isActive = true;
+    }
+
+    // Methods
+    def greet() -> string {
+        return "Hello, my name is " + this.name;
+    }
+
+    def getAge() -> int {
+        return this.age;
+    }
+}
+
+// 2. Inheritance
+class Student extends Person {
+    string school;
+    float gpa;
+
+    Student(string name, int age, string school) {
+        super(name, age);
+        this.school = school;
+        this.gpa = 0.0;
+    }
+
+    def study() -> void {
+        this.gpa = this.gpa + 0.1;
+    }
+
+    override def greet() -> string {
+        return super.greet() + " and I study at " + this.school;
+    }
+}
+
+// 3. Modern Class with Private Fields
+class BankAccount {
+    private float balance;
+    private string accountNumber;
+
+    BankAccount(string accountNumber) {
+        this.accountNumber = accountNumber;
+        this.balance = 0.0;
+    }
+
+    def deposit(float amount) -> void {
+        if (amount > 0) {
+            this.balance = this.balance + amount;
+        }
+    }
+
+    def withdraw(float amount) -> bool {
+        if (amount > 0 and amount <= this.balance) {
+            this.balance = this.balance - amount;
+            return true;
+        }
+        return false;
+    }
+
+    def getBalance() -> float {
+        return this.balance;
+    }
+}
+
+// 4. Interface (Modern Feature)
+interface Shape {
+    def getArea() -> float;
+    def getPerimeter() -> float;
+}
+
+class Circle implements Shape {
+    float radius;
+
+    Circle(float radius) {
+        this.radius = radius;
+    }
+
+    def getArea() -> float {
+        return 3.14159 * this.radius * this.radius;
+    }
+
+    def getPerimeter() -> float {
+        return 2 * 3.14159 * this.radius;
+    }
+}
+
+// Test the classes
+print("\nTesting Classes:");
+
+// Basic class
+var person = new Person("John", 25);
+print(person.greet());
+print("Age:", person.getAge());
+
+// Inheritance
+var student = new Student("Alice", 20, "High School");
+print(student.greet());
+student.study();
+print("GPA:", student.gpa);
+
+// Bank Account
+var account = new BankAccount("12345");
+account.deposit(1000);
+print("Balance after deposit:", account.getBalance());
+account.withdraw(500);
+print("Balance after withdrawal:", account.getBalance());
+
+// Shape interface
+var circle = new Circle(5);
+print("Circle area:", circle.getArea());
+print("Circle perimeter:", circle.getPerimeter());
+
+// Modern class features
+class ModernUser {
+    // Static property
+    static int userCount = 0;
+
+    // Modern constructor
+    constructor(string name) {
+        this.name = name;
+        ModernUser.userCount = ModernUser.userCount + 1;
+    }
+
+    // Getter
+    get userInfo() {
+        return `User ${this.name} (${ModernUser.userCount})`;
+    }
+
+    // Static method
+    static def getTotalUsers() -> int {
+        return ModernUser.userCount;
+    }
+}
+
+// Test modern features
+var user1 = new ModernUser("Bob");
+var user2 = new ModernUser("Carol");
+print("\nModern Features:");
+print(user1.userInfo);
+print("Total users:", ModernUser.getTotalUsers()); 

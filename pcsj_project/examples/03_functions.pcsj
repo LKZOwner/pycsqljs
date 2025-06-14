@@ -1,0 +1,84 @@
+// Functions and Modern Features
+print("=== Functions and Modern Features ===");
+
+// 1. Basic Function
+def greet(string name) -> string {
+    return "Hello, " + name + "!";
+}
+
+// 2. Function with Multiple Parameters
+def calculate(int a, int b, string operation) -> int {
+    if (operation == "add") {
+        return a + b;
+    } else if (operation == "subtract") {
+        return a - b;
+    } else if (operation == "multiply") {
+        return a * b;
+    } else {
+        return 0;
+    }
+}
+
+// 3. Modern Arrow Function
+var multiply = (int x, int y) => x * y;
+
+// 4. Async Function
+async def fetchData(string url) -> json {
+    // Simulate API call
+    await sleep(1000);  // Wait 1 second
+    return {"data": "Some data from " + url};
+}
+
+// 5. Function with Default Parameters
+def createUser(string name, int age = 20, bool isActive = true) -> object {
+    return {
+        "name": name,
+        "age": age,
+        "isActive": isActive
+    };
+}
+
+// 6. Rest Parameters
+def sum(...numbers) -> int {
+    var total = 0;
+    for (num of numbers) {
+        total = total + num;
+    }
+    return total;
+}
+
+// 7. Modern Template Literals
+def createMessage(string name, int score) -> string {
+    return `Player ${name} scored ${score} points!`;
+}
+
+// Test the functions
+print("\nTesting Functions:");
+
+// Basic function
+print(greet("John"));
+
+// Multiple parameters
+print("5 + 3 =", calculate(5, 3, "add"));
+print("10 - 4 =", calculate(10, 4, "subtract"));
+
+// Arrow function
+print("4 * 6 =", multiply(4, 6));
+
+// Default parameters
+var user1 = createUser("Alice");
+var user2 = createUser("Bob", 25, false);
+print("User 1:", user1);
+print("User 2:", user2);
+
+// Rest parameters
+print("Sum of 1,2,3,4,5 =", sum(1, 2, 3, 4, 5));
+
+// Template literals
+print(createMessage("John", 100));
+
+// Async function (using modern syntax)
+(async () => {
+    var data = await fetchData("https://api.example.com");
+    print("Fetched data:", data);
+})(); 

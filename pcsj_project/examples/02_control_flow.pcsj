@@ -1,0 +1,63 @@
+// Control Flow Examples
+print("=== Control Flow Examples ===");
+
+// 1. If-Else Statements
+int age = 20;
+if (age >= 18) {
+    print("You are an adult");
+} else if (age >= 13) {
+    print("You are a teenager");
+} else {
+    print("You are a child");
+}
+
+// 2. Switch Statement
+string day = "Monday";
+switch (day) {
+    case "Monday":
+        print("Start of the week");
+        break;
+    case "Friday":
+        print("End of the week");
+        break;
+    default:
+        print("Middle of the week");
+}
+
+// 3. For Loop
+print("\nCounting from 1 to 5:");
+for (int i = 1; i <= 5; i = i + 1) {
+    print("Count:", i);
+}
+
+// 4. While Loop
+print("\nCountdown from 5:");
+int count = 5;
+while (count > 0) {
+    print("Countdown:", count);
+    count = count - 1;
+}
+
+// 5. For-Of Loop (Modern)
+string[] fruits = ["apple", "banana", "orange"];
+print("\nFruits in basket:");
+for (fruit of fruits) {
+    print("Fruit:", fruit);
+}
+
+// 6. Break and Continue
+print("\nBreak example:");
+for (int i = 1; i <= 10; i = i + 1) {
+    if (i == 5) {
+        break;
+    }
+    print("Number:", i);
+}
+
+print("\nContinue example:");
+for (int i = 1; i <= 5; i = i + 1) {
+    if (i == 3) {
+        continue;
+    }
+    print("Number:", i);
+} 

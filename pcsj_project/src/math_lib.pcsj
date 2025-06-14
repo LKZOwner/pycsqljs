@@ -1,0 +1,11 @@
+// pcsj_project/src/math_lib.pcsj
+
+def add(int a, int b) -> int {
+    return a + b;
+}
+
+def subtract(int a, int b) -> int {
+    return a - b;
+}
+
+var PI = 3.14159; 

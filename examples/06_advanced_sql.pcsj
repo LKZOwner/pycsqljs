@@ -1,0 +1,133 @@
+// Advanced SQL features in PyCppSQLJS
+
+// Create tables with relationships
+table departments {
+    id: int PRIMARY KEY,
+    name: string,
+    budget: float
+};
+
+table employees {
+    id: int PRIMARY KEY,
+    name: string,
+    department_id: int FOREIGN KEY REFERENCES departments(id),
+    salary: float,
+    hire_date: datetime
+};
+
+table projects {
+    id: int PRIMARY KEY,
+    name: string,
+    department_id: int FOREIGN KEY REFERENCES departments(id),
+    start_date: datetime,
+    end_date: datetime
+};
+
+// Insert sample data
+INSERT INTO departments VALUES 
+    (1, "Engineering", 1000000),
+    (2, "Marketing", 500000),
+    (3, "Sales", 750000);
+
+INSERT INTO employees VALUES 
+    (1, "John Doe", 1, 85000, "2020-01-15"),
+    (2, "Jane Smith", 1, 95000, "2019-06-01"),
+    (3, "Bob Johnson", 2, 75000, "2021-03-10"),
+    (4, "Alice Brown", 3, 90000, "2020-11-20");
+
+INSERT INTO projects VALUES 
+    (1, "Website Redesign", 2, "2023-01-01", "2023-06-30"),
+    (2, "Mobile App", 1, "2023-02-15", "2023-12-31"),
+    (3, "Sales Portal", 3, "2023-03-01", "2023-08-31");
+
+// Complex queries with JOINs
+query dept_employees = 
+    SELECT d.name as department, 
+           e.name as employee, 
+           e.salary
+    FROM departments d
+    JOIN employees e ON d.id = e.department_id
+    ORDER BY d.name, e.salary DESC;
+
+// Subquery example
+query high_salary_depts = 
+    SELECT d.name, d.budget
+    FROM departments d
+    WHERE d.id IN (
+        SELECT department_id 
+        FROM employees 
+        GROUP BY department_id 
+        HAVING AVG(salary) > 80000
+    );
+
+// Window functions
+query salary_rankings = 
+    SELECT name,
+           salary,
+           department_id,
+           RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) as salary_rank
+    FROM employees;
+
+// Common Table Expression (CTE)
+WITH project_duration AS (
+    SELECT 
+        name,
+        DATEDIFF(end_date, start_date) as duration_days
+    FROM projects
+)
+query long_projects = 
+    SELECT name, duration_days
+    FROM project_duration
+    WHERE duration_days > 180;
+
+// Transaction example
+async function transferBudget(fromDeptId, toDeptId, amount) {
+    try {
+        // Start transaction
+        BEGIN TRANSACTION;
+        
+        // Update source department
+        UPDATE departments 
+        SET budget = budget - amount 
+        WHERE id = fromDeptId;
+        
+        // Update target department
+        UPDATE departments 
+        SET budget = budget + amount 
+        WHERE id = toDeptId;
+        
+        // Commit transaction
+        COMMIT;
+        
+        print("Budget transfer successful");
+    } catch (error) {
+        // Rollback on error
+        ROLLBACK;
+        print(`Transfer failed: ${error.message}`);
+        throw error;
+    }
+}
+
+// Execute the transfer
+await transferBudget(1, 2, 100000);
+
+// Print results
+print("\nDepartment Employees:");
+for (const row of dept_employees) {
+    print(`${row.department}: ${row.employee} - $${row.salary}`);
+}
+
+print("\nHigh Salary Departments:");
+for (const row of high_salary_depts) {
+    print(`${row.name}: $${row.budget}`);
+}
+
+print("\nSalary Rankings:");
+for (const row of salary_rankings) {
+    print(`${row.name} (Dept ${row.department_id}): $${row.salary} - Rank ${row.salary_rank}`);
+}
+
+print("\nLong Projects:");
+for (const row of long_projects) {
+    print(`${row.name}: ${row.duration_days} days`);
+} 

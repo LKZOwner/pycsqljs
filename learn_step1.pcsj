@@ -1,0 +1,28 @@
+// Step 1: Basic Variables and Types
+// This is a comment - it helps explain your code
+
+// Basic variable types
+string name = "John";        // Text
+int age = 25;               // Whole numbers
+float height = 1.75;        // Decimal numbers
+bool isStudent = true;      // True or false
+
+// Print variables
+print("Name:", name);
+print("Age:", age);
+print("Height:", height);
+print("Is Student:", isStudent);
+
+// Basic math
+int sum = age + 5;
+float total = height * 2;
+print("Age in 5 years:", sum);
+print("Double height:", total);
+
+// String operations
+string greeting = "Hello, " + name + "!";
+print(greeting);
+
+// Boolean operations
+bool canVote = age >= 18;
+print("Can vote:", canVote); 

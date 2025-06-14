@@ -1,0 +1,52 @@
+// 06_error_handling.pcsj: Demonstrating Error Handling
+print("=== Error Handling Examples ===");
+
+// 1. Basic Try-Catch-Finally Block
+async def divideNumbers(int a, int b) {
+    try {
+        print(`Attempting to divide ${a} by ${b}`);
+        if (b == 0) {
+            // Custom error type, if defined. Otherwise, generic Error.
+            throw new Error("DivisionByZeroError: Cannot divide by zero!");
+        }
+        var result = a / b;
+        print(`Result: ${result}`);
+    } catch (err) {
+        print(`Caught an error: ${err.message}`);
+    } finally {
+        print("Division attempt finished.");
+    }
+}
+
+// 2. Uncaught Error (will terminate program if not handled)
+async def riskyOperation() {
+    print("\n--- Uncaught Error Example ---");
+    var undefinedVar = null;
+    // This will cause an error because 'undefinedVar.property' is invalid
+    // In a real parser, this might be a TypeError or AttributeError
+    print(`Accessing undefined property: ${undefinedVar.property}`); 
+    print("This line will not be reached if error is uncaught.");
+}
+
+// 3. Error within a nested call
+async def parentFunction() {
+    print("\n--- Nested Error Example ---");
+    await divideNumbers(10, 0); // This call has its own error handling
+    print("Parent function continued after handled error.");
+}
+
+// Main execution block
+(async () => {
+    await divideNumbers(10, 2); // Successful division
+    await divideNumbers(10, 0); // Division by zero - caught
+    
+    // Calling riskyOperation outside a try-catch block
+    // This should cause the interpreter to report an unhandled error
+    // or terminate, depending on the interpreter's robustnes.
+    print("\nAttempting to run riskyOperation (expecting an uncaught error if not wrapped).");
+    await riskyOperation();
+    
+    print("This line might not be reached if riskyOperation causes an uncaught error.");
+
+    await parentFunction(); // Contains a handled error
+})(); 

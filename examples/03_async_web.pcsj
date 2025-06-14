@@ -1,0 +1,48 @@
+// Async and web features example in PyCppSQLJS
+
+// Import HTTP module
+import http;
+
+// Async function to fetch data
+async function fetchUserData(userId) {
+    try {
+        const response = await http.get(`https://api.example.com/users/${userId}`);
+        return response.json();
+    } catch (error) {
+        print(`Error fetching user data: ${error.message}`);
+        return null;
+    }
+}
+
+// Async function to process multiple requests
+async function processUsers(userIds) {
+    const results = [];
+    
+    for (const id of userIds) {
+        const userData = await fetchUserData(id);
+        if (userData) {
+            results.push(userData);
+        }
+    }
+    
+    return results;
+}
+
+// Main async function
+async function main() {
+    const userIds = [1, 2, 3];
+    print("Fetching user data...");
+    
+    const users = await processUsers(userIds);
+    print("Users data:", users);
+    
+    // Using template literals with async data
+    for (const user of users) {
+        print(`User ${user.id}: ${user.name} (${user.email})`);
+    }
+}
+
+// Run the main function
+main().catch(error => {
+    print("Application error:", error);
+}); 

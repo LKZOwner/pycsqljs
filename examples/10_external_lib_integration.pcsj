@@ -1,0 +1,29 @@
+// Simple external library integration example in PyCppSQLJS
+
+// Imagine this imports a Python 'random' module or similar functionality
+import random_lib;
+
+function main() {
+    print("--- External Library Integration (Random Numbers) ---");
+    
+    // Simulate generating a random integer
+    const randomNumber = random_lib.randint(1, 100);
+    print(`Generated a random number between 1 and 100: ${randomNumber}`);
+
+    // Simulate picking a random choice from a list
+    const choices = ["apple", "banana", "cherry", "date"];
+    const randomChoice = random_lib.choice(choices);
+    print(`Randomly chosen fruit: ${randomChoice}`);
+
+    // Simulate shuffling a list
+    let numbersToShuffle = [1, 2, 3, 4, 5];
+    print(`Original list: [${numbersToShuffle.join(', ')}]`);
+    random_lib.shuffle(numbersToShuffle);
+    print(`Shuffled list: [${numbersToShuffle.join(', ')}]`);
+
+    // Simulate generating a random float
+    const randomFloat = random_lib.random(); // Between 0.0 and 1.0
+    print(`Generated a random float: ${randomFloat}`);
+}
+
+main(); 

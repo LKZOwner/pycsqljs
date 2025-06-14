@@ -1,0 +1,59 @@
+// Simple web client example in PyCppSQLJS
+
+// Import the http library
+import http;
+
+async function fetchAndPrintUserData(userId) {
+    try {
+        print(`Fetching user data for user ID: ${userId}...`);
+        // Simulate fetching data from a public API
+        const url = `https://jsonplaceholder.typicode.com/users/${userId}`;
+        const response = await http.get(url);
+        const userData = response.json();
+        
+        if (response.status === 200) {
+            print("User Data Received:");
+            print(`Name: ${userData.name}`);
+            print(`Email: ${userData.email}`);
+            print(`City: ${userData.address.city}`);
+            print(`Phone: ${userData.phone}`);
+        } else {
+            print(`Error: Could not fetch user data. Status: ${response.status}`);
+        }
+    } catch (error) {
+        print(`An error occurred: ${error.message}`);
+    }
+}
+
+async function main() {
+    // Fetch data for a specific user
+    await fetchAndPrintUserData(1);
+
+    print("\n--- Demonstrating POST request ---");
+    try {
+        const postUrl = "https://jsonplaceholder.typicode.com/posts";
+        const newPost = {
+            title: "PyCppSQLJS Post",
+            body: "This is a new post from PyCppSQLJS.",
+            userId: 1
+        };
+
+        print("Sending POST request...");
+        const postResponse = await http.post(postUrl, newPost);
+        const responseData = postResponse.json();
+
+        if (postResponse.status >= 200 && postResponse.status < 300) {
+            print("Post created successfully:");
+            print(`ID: ${responseData.id}`);
+            print(`Title: ${responseData.title}`);
+        } else {
+            print(`Error creating post. Status: ${postResponse.status}`);
+        }
+
+    } catch (error) {
+        print(`An error occurred during POST: ${error.message}`);
+    }
+}
+
+// Run the main async function
+main(); 

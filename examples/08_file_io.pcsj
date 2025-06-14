@@ -1,0 +1,58 @@
+// Simple file I/O example in PyCppSQLJS
+
+// Import the file system library (mocked)
+import fs;
+
+const FILENAME = "my_data.txt";
+
+async function writeFileExample() {
+    try {
+        const content = "Hello from PyCppSQLJS!\nThis is a file I/O example.\n";
+        print(`Writing to file: ${FILENAME}`);
+        await fs.writeFile(FILENAME, content);
+        print("File written successfully.");
+    } catch (error) {
+        print(`Error writing file: ${error.message}`);
+    }
+}
+
+async function readFileExample() {
+    try {
+        print(`Reading from file: ${FILENAME}`);
+        const content = await fs.readFile(FILENAME);
+        print("File Content:");
+        print("------------------");
+        print(content);
+        print("------------------");
+    } catch (error) {
+        print(`Error reading file: ${error.message}`);
+    }
+}
+
+async function appendFileExample() {
+    try {
+        const contentToAppend = "\nAppending this new line.\nAnother appended line.";
+        print(`Appending to file: ${FILENAME}`);
+        await fs.appendFile(FILENAME, contentToAppend);
+        print("Content appended successfully.");
+    } catch (error) {
+        print(`Error appending to file: ${error.message}`);
+    }
+}
+
+async function main() {
+    // Demonstrate writing to a file
+    await writeFileExample();
+    
+    // Demonstrate reading from the file
+    await readFileExample();
+
+    // Demonstrate appending to the file
+    await appendFileExample();
+
+    // Read again to see appended content
+    await readFileExample();
+}
+
+// Run the main async function
+main(); 

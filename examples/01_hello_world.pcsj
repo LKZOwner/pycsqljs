@@ -1,0 +1,14 @@
+// Basic Hello World example in PyCppSQLJS
+print("Hello, World!");
+
+// Variable declaration with type inference
+name = "PyCppSQLJS";
+print(`Welcome to ${name}!`);
+
+// Basic arithmetic
+x = 10;
+y = 5;
+print(`Sum: ${x + y}`);
+print(`Difference: ${x - y}`);
+print(`Product: ${x * y}`);
+print(`Quotient: ${x / y}`); 

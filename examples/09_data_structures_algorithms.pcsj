@@ -1,0 +1,76 @@
+// Simple data structures and algorithms example in PyCppSQLJS
+
+// 1. Linked List Implementation
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+    }
+
+    add(value) {
+        const newNode = new Node(value);
+        if (!this.head) {
+            this.head = newNode;
+        } else {
+            let current = this.head;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    printList() {
+        let current = this.head;
+        let result = "Linked List: ";
+        while (current) {
+            result += `${current.value} -> `;
+            current = current.next;
+        }
+        print(result + "null");
+    }
+}
+
+// 2. Bubble Sort Algorithm
+function bubbleSort(arr) {
+    const n = arr.length;
+    let swapped;
+    do {
+        swapped = false;
+        for (let i = 0; i < n - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                // Swap elements
+                const temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+    } while (swapped);
+    return arr;
+}
+
+// Main execution
+function main() {
+    print("--- Linked List Example ---");
+    const myList = new LinkedList();
+    myList.add(10);
+    myList.add(20);
+    myList.add(5);
+    myList.add(15);
+    myList.printList(); // Expected: Linked List: 10 -> 20 -> 5 -> 15 -> null
+
+    print("\n--- Bubble Sort Example ---");
+    const numbers = [64, 34, 25, 12, 22, 11, 90];
+    print(`Original Array: [${numbers.join(', ')}]`);
+    const sortedNumbers = bubbleSort(numbers);
+    print(`Sorted Array: [${sortedNumbers.join(', ')}]`); // Expected: [11, 12, 22, 25, 34, 64, 90]
+}
+
+main(); 

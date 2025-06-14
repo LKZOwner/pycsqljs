@@ -1,0 +1,25 @@
+// pcsj_project/src/http_lib.pcsj
+
+// Simulate an HTTP response object
+class MockHttpResponse {
+    string status;
+    string body;
+
+    MockHttpResponse(string status, string body) {
+        this.status = status;
+        this.body = body;
+    }
+
+    async def json() {
+        // Simulate parsing JSON
+        return JSON.parse(this.body);
+    }
+}
+
+// Simulate an HTTP GET request
+async def get(string url) -> MockHttpResponse {
+    print(`Simulating HTTP GET to: ${url}`);
+    await sleep(50); // Simulate network latency
+    // Return a mock response
+    return new MockHttpResponse("200 OK", `{"id": "prod123", "name": "Mock Product", "price": 99.99, "stock": 10, "available": true}`);
+} 

@@ -1,0 +1,86 @@
+// Error handling example in PyCppSQLJS
+
+// Custom error class
+class ValidationError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "ValidationError";
+    }
+}
+
+// Function with error handling
+function validateAge(age) {
+    if (typeof age !== "number") {
+        throw new ValidationError("Age must be a number");
+    }
+    if (age < 0) {
+        throw new ValidationError("Age cannot be negative");
+    }
+    if (age > 150) {
+        throw new ValidationError("Age seems invalid");
+    }
+    return true;
+}
+
+// Try-catch with multiple error types
+try {
+    // Test with invalid input
+    validateAge("twenty");
+} catch (error) {
+    if (error instanceof ValidationError) {
+        print(`Validation failed: ${error.message}`);
+    } else {
+        print(`Unexpected error: ${error.message}`);
+    }
+}
+
+// Async error handling
+async function fetchWithRetry(url, maxRetries = 3) {
+    let lastError;
+    
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            const response = await http.get(url);
+            return response.json();
+        } catch (error) {
+            lastError = error;
+            print(`Attempt ${i + 1} failed: ${error.message}`);
+            if (i < maxRetries - 1) {
+                await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
+            }
+        }
+    }
+    
+    throw new Error(`Failed after ${maxRetries} attempts. Last error: ${lastError.message}`);
+}
+
+// Using the async function with error handling
+async function main() {
+    try {
+        const data = await fetchWithRetry("https://api.example.com/data");
+        print("Data received:", data);
+    } catch (error) {
+        print("Final error:", error.message);
+    }
+}
+
+// Run the main function
+main();
+
+// Finally block example
+function processFile(filename) {
+    let file = null;
+    try {
+        file = openFile(filename);
+        // Process file
+        return file.read();
+    } catch (error) {
+        print(`Error processing file: ${error.message}`);
+        throw error;
+    } finally {
+        if (file) {
+            file.close();
+            print("File closed successfully");
+        }
+    }
+} 

@@ -1,0 +1,37 @@
+// SQL-like query examples in PyCppSQLJS
+
+// Create a sample table
+table users {
+    id: int,
+    name: string,
+    age: int,
+    email: string
+};
+
+// Insert some data
+INSERT INTO users VALUES (1, "John Doe", 25, "john@example.com");
+INSERT INTO users VALUES (2, "Jane Smith", 30, "jane@example.com");
+INSERT INTO users VALUES (3, "Bob Johnson", 22, "bob@example.com");
+
+// Basic SELECT query
+query young_users = SELECT name, age FROM users WHERE age < 25;
+print("Young users:", young_users);
+
+// Complex query with JOIN
+table orders {
+    id: int,
+    user_id: int,
+    product: string,
+    amount: float
+};
+
+INSERT INTO orders VALUES (1, 1, "Laptop", 999.99);
+INSERT INTO orders VALUES (2, 2, "Phone", 499.99);
+
+query user_orders = 
+    SELECT u.name, o.product, o.amount 
+    FROM users u 
+    JOIN orders o ON u.id = o.user_id 
+    WHERE o.amount > 500;
+
+print("Expensive orders:", user_orders); 

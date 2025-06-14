@@ -1,0 +1,162 @@
+// PyCppSQLJS: A Modern Language Example
+// Combining Python's readability, C++'s performance, SQL's data handling, and JavaScript's modern features
+
+import "math_lib.pcsj"; // Example of module import
+import "http_lib.pcsj"; // Example of module import
+
+// 1. Custom Data Type: Schema (from SQL & C++ define)
+// Defines a structure for data, like a table schema
+schema ProductSchema {
+    string id;
+    string name;
+    float price;
+    int stock;
+    bool available;
+}
+
+// 2. Classes with Inheritance (C++ & Python style)
+class Person {
+    string name;
+    int age;
+
+    Person(string name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    def greet() -> string {
+        return `Hello, my name is ${this.name}.`;
+    }
+}
+
+class Employee extends Person {
+    string department;
+    float salary;
+
+    Employee(string name, int age, string department, float salary) {
+        super(name, age);
+        this.department = department;
+        this.salary = salary;
+    }
+
+    override def greet() -> string {
+        return `${super.greet()} I work in ${this.department}.`;
+    }
+}
+
+// 3. Functions (C++ & Python style) with Type Hints & Default Args
+def calculateArea(float width, float height = 1.0) -> float {
+    return width * height;
+}
+
+// 4. Async Functions & Await (JavaScript style)
+async def fetchProductData(string productId) -> ProductSchema {
+    // Simulate API call using imported http_lib
+    var response = await http_lib.get(`https://api.example.com/products/${productId}`);
+    var data = await response.json();
+    return new ProductSchema(data.id, data.name, data.price, data.stock, data.available);
+}
+
+// 5. Control Flow: If/Else If/Else (C++ & Python style)
+def checkStock(int stockCount) {
+    if (stockCount > 10) {
+        print("In stock");
+    } else if (stockCount > 0) {
+        print("Low stock");
+    } else {
+        print("Out of stock");
+    }
+}
+
+// 6. Loops: For, While, For-Of (C++ & JS style)
+print("\n--- Loops ---");
+for (int i = 0; i < 3; i = i + 1) {
+    print(`For loop count: ${i}`);
+}
+
+var j = 0;
+while (j < 2) {
+    print(`While loop count: ${j}`);
+    j = j + 1;
+}
+
+var itemNames = ["Laptop", "Mouse", "Keyboard"];
+for (item of itemNames) {
+    print(`Item: ${item}`);
+}
+
+// 7. SQL-like Queries (mocked, combines with schema)
+var productsDb = [
+    {id: "P001", name: "Laptop", price: 1200.0, stock: 5, available: true},
+    {id: "P002", name: "Mouse", price: 25.0, stock: 15, available: true},
+    {id: "P003", name: "Keyboard", price: 75.0, stock: 0, available: false}
+];
+
+// Select products that are available and map to ProductSchema
+var availableProducts = SELECT id, name, price, stock, available 
+                        FROM productsDb 
+                        WHERE available = true 
+                        AS ProductSchema;
+print("\nAvailable Products (SQL-like):");
+for (product of availableProducts) {
+    print(`- ${product.name} (${product.price})`);
+}
+
+// 8. Error Handling (JavaScript style try-catch-finally)
+async def performRiskyOperation() {
+    try {
+        // Simulate an error or a successful operation
+        var num = 10;
+        if (num > 5) {
+            throw new Error("Simulated error: number too high!");
+        }
+        print("Risky operation successful!");
+    } catch (err) {
+        print(`Caught error: ${err.message}`);
+    } finally {
+        print("Risky operation cleanup complete.");
+    }
+}
+
+// 9. Lambdas/Arrow Functions (JavaScript style)
+var sum = (int a, int b) => a + b;
+print("\nLambda sum (5 + 10):", sum(5, 10));
+
+// 10. Higher-Order Functions (map, filter, reduce - JavaScript style)
+var nums = [1, 2, 3, 4, 5];
+var doubledNums = nums.map(n => n * 2);
+print("Doubled nums:", doubledNums);
+
+var evenNums = nums.filter(n => n % 2 == 0);
+print("Even nums:", evenNums);
+
+var totalSum = nums.reduce((acc, curr) => acc + curr, 0);
+print("Total sum:", totalSum);
+
+// 11. Template Literals (JavaScript style)
+var playerName = "Hero";
+var score = 1200;
+var gameMessage = `Player ${playerName} achieved a score of ${score} points!`;
+print("\nGame Message:", gameMessage);
+
+// 12. Native Interop (Python)
+print("\n--- Native Interop (Python) ---");
+py("import os\nprint(f'Current directory from Python: {os.getcwd()}')");
+
+// Main execution flow (async IIFE for top-level await)
+(async () => {
+    print("\n--- Main Execution ---");
+    var emp = new Employee("Jane Doe", 35, "Sales", 60000.0);
+    print(emp.greet());
+
+    checkStock(7);
+    checkStock(12);
+    checkStock(0);
+
+    await performRiskyOperation();
+    var product = await fetchProductData("P001");
+    print(`Fetched product: ${product.name} (Stock: ${product.stock})`);
+
+    // Event simulation (conceptual, would trigger main() on button click)
+    // onClick("executeButton", async () => { await main(); });
+})(); 

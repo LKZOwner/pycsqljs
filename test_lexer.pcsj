@@ -1,0 +1,52 @@
+// Test file for PyCppSQLJS lexer
+// This file tests various language features
+
+// Variable declarations
+var name = "John";
+var age = 25;
+var height = 1.75;
+var isStudent = true;
+
+// Function definition
+function greet(person) {
+    print("Hello, " + person + "!");
+}
+
+// Function call
+greet(name);
+
+// Control flow
+if (age >= 18) {
+    print("You are an adult");
+} else {
+    print("You are a minor");
+}
+
+// Loops
+var i = 0;
+while (i < 5) {
+    print(i);
+    i = i + 1;
+}
+
+// Import statement
+import "math";
+
+// Complex expressions
+var result = (age + 5) * 2;
+var isTall = height > 1.8 and age > 20;
+
+// String operations
+var fullName = name + " Doe";
+var message = "Welcome, " + fullName + "!";
+
+// Boolean operations
+var canVote = age >= 18 and not isStudent;
+var isEligible = canVote or (age >= 16 and isStudent);
+
+// Print results
+print("Result:", result);
+print("Is tall:", isTall);
+print("Message:", message);
+print("Can vote:", canVote);
+print("Is eligible:", isEligible); 
