@@ -1,0 +1,211 @@
+Windows Registry Editor Version 5.00
+
+; File Extension Association
+[HKEY_CLASSES_ROOT\.pcsj]
+@="PyCppSQLJSFile"
+"Content Type"="text/x-pcsj"
+"PerceivedType"="text"
+"OpenWithProgids"="PyCppSQLJSFile"
+"OpenWithList"="python.exe"
+"OpenWithList"="notepad.exe"
+"OpenWithList"="code.exe"
+"OpenWithList"="notepad++.exe"
+"OpenWithList"="sublime_text.exe"
+"OpenWithList"="atom.exe"
+"OpenWithList"="pycharm64.exe"
+"OpenWithList"="vscode.exe"
+
+; Main File Type Information
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile]
+@="PyCppSQLJS Program"
+"FriendlyTypeName"="PyCppSQLJS Program"
+"EditFlags"=dword:00000000
+"BrowserFlags"=dword:00000008
+"AlwaysShowExt"=""
+"InfoTip"="PyCppSQLJS Programming Language File - A modern programming language combining Python, C++, SQL, and JavaScript features. Supports object-oriented programming, async/await, SQL queries, and modern JavaScript features."
+"DefaultIcon"="%SystemRoot%\\System32\\SHELL32.dll,23"
+"PreviewHandler"="{8895b1c6-b41f-4c1c-a562-0d564250836f}"
+"AppUserModelId"="PyCppSQLJS.Editor"
+"SupportedTypes"=".pcsj"
+"URL Protocol"=""
+"EditFlags"=dword:00000000
+"FriendlyTypeName"="@%SystemRoot%\\System32\\shell32.dll,-101"
+"InfoTip"="@%SystemRoot%\\System32\\shell32.dll,-102"
+"NeverShowExt"=""
+"TileInfo"="prop:System.FileDescription;System.FileVersion;System.Company;System.Copyright"
+"FullDetails"="prop:System.FileDescription;System.FileVersion;System.Company;System.Copyright;System.DateCreated;System.DateModified;System.Size"
+"PreviewDetails"="prop:System.FileDescription;System.FileVersion;System.Company;System.Copyright"
+
+; Shell Integration
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell]
+@="open"
+"MultiSelectModel"="Player"
+"BrowserFlags"=dword:00000008
+"ExplorerFlags"=dword:00000000
+
+; Open Command
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\open]
+@="Run PyCppSQLJS Program"
+"FriendlyAppName"="PyCppSQLJS Interpreter"
+"HasLUAShield"=""
+"SuppressionPolicyEx"="{F211AA05-D4DF-4370-A2A0-9F19CAB56C35}"
+"CommandStateHandler"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+"CommandStateSync"=""
+
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\open\command]
+@="\"C:\\Windows\\System32\\cmd.exe\" /k python \"%~1\""
+"DelegateExecute"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+
+; Edit Command
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\edit]
+@="Edit PyCppSQLJS Program"
+"FriendlyAppName"="Notepad"
+"HasLUAShield"=""
+"SuppressionPolicyEx"="{F211AA05-D4DF-4370-A2A0-9F19CAB56C35}"
+"CommandStateHandler"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+"CommandStateSync"=""
+
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\edit\command]
+@="notepad.exe \"%1\""
+"DelegateExecute"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+
+; Compile Command
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\compile]
+@="Compile PyCppSQLJS Program"
+"FriendlyAppName"="PyCppSQLJS Compiler"
+"HasLUAShield"=""
+"SuppressionPolicyEx"="{F211AA05-D4DF-4370-A2A0-9F19CAB56C35}"
+"CommandStateHandler"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+"CommandStateSync"=""
+
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\compile\command]
+@="\"C:\\Windows\\System32\\cmd.exe\" /k python \"%~1\""
+"DelegateExecute"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+
+; Run as Administrator
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\runas]
+@="Run as administrator"
+"HasLUAShield"=""
+"SuppressionPolicyEx"="{F211AA05-D4DF-4370-A2A0-9F19CAB56C35}"
+"CommandStateHandler"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+"CommandStateSync"=""
+
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\runas\command]
+@="\"C:\\Windows\\System32\\cmd.exe\" /k python \"%~1\""
+"DelegateExecute"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+
+; Debug Command
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\debug]
+@="Debug PyCppSQLJS Program"
+"FriendlyAppName"="PyCppSQLJS Debugger"
+"HasLUAShield"=""
+"SuppressionPolicyEx"="{F211AA05-D4DF-4370-A2A0-9F19CAB56C35}"
+
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\debug\command]
+@="\"C:\\Windows\\System32\\cmd.exe\" /k python -m pdb \"%~1\""
+"DelegateExecute"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+
+; Profile Command
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\profile]
+@="Profile PyCppSQLJS Program"
+"FriendlyAppName"="PyCppSQLJS Profiler"
+"HasLUAShield"=""
+"SuppressionPolicyEx"="{F211AA05-D4DF-4370-A2A0-9F19CAB56C35}"
+
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shell\profile\command]
+@="\"C:\\Windows\\System32\\cmd.exe\" /k python -m cProfile \"%~1\""
+"DelegateExecute"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+
+; Send To Menu
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shellex\ContextMenuHandlers\SendTo]
+@="{7BA4C740-9E81-11CF-99D3-00AA004AE837}"
+
+; Property Handler
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\shellex\PropertyHandler]
+@="{8895b1c6-b41f-4c1c-a562-0d564250836f}"
+
+; Application Associations
+[HKEY_CLASSES_ROOT\Applications\python.exe\shell\open\command]
+@="\"C:\\Windows\\System32\\cmd.exe\" /k python \"%1\""
+"DelegateExecute"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+
+[HKEY_CLASSES_ROOT\Applications\code.exe\shell\open\command]
+@="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\" \"%1\""
+"DelegateExecute"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+
+[HKEY_CLASSES_ROOT\Applications\notepad++.exe\shell\open\command]
+@="\"C:\\Program Files\\Notepad++\\notepad++.exe\" \"%1\""
+"DelegateExecute"="{5E941D80-BF96-11CD-B579-08002B30BFEB}"
+
+; Default Icon
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\DefaultIcon]
+@="%SystemRoot%\\System32\\SHELL32.dll,23"
+"FriendlyTypeName"="@%SystemRoot%\\System32\\shell32.dll,-101"
+
+; Preview Handler
+[HKEY_CLASSES_ROOT\PyCppSQLJSFile\CLSID]
+@="{8895b1c6-b41f-4c1c-a562-0d564250836f}"
+
+[HKEY_CLASSES_ROOT\CLSID\{8895b1c6-b41f-4c1c-a562-0d564250836f}]
+@="PyCppSQLJS Preview Handler"
+"AppID"="{6d2b5079-2f0b-48dd-ab7f-97cec514d30b}"
+"DisplayName"="PyCppSQLJS Preview Handler"
+"ThreadingModel"="Both"
+
+[HKEY_CLASSES_ROOT\CLSID\{8895b1c6-b41f-4c1c-a562-0d564250836f}\InprocServer32]
+@="%SystemRoot%\\System32\\shell32.dll"
+"ThreadingModel"="Both"
+
+; User-specific Settings
+[HKEY_CURRENT_USER\Software\Classes\.pcsj]
+@="PyCppSQLJSFile"
+"Content Type"="text/x-pcsj"
+"PerceivedType"="text"
+"OpenWithProgids"="PyCppSQLJSFile"
+"OpenWithList"="python.exe"
+"OpenWithList"="notepad.exe"
+"OpenWithList"="code.exe"
+"OpenWithList"="notepad++.exe"
+"OpenWithList"="sublime_text.exe"
+"OpenWithList"="atom.exe"
+"OpenWithList"="pycharm64.exe"
+"OpenWithList"="vscode.exe"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pcsj]
+"Application"="python.exe"
+"Progid"="PyCppSQLJSFile"
+"AppUserModelId"="Microsoft.WindowsNotepad_8wekyb3d8bbwe!App"
+"OpenWithList"="python.exe"
+"OpenWithList"="notepad.exe"
+"OpenWithList"="code.exe"
+"OpenWithList"="notepad++.exe"
+"OpenWithList"="sublime_text.exe"
+"OpenWithList"="atom.exe"
+"OpenWithList"="pycharm64.exe"
+"OpenWithList"="vscode.exe"
+"OpenWithProgids"="PyCppSQLJSFile"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pcsj\OpenWithList]
+"a"="python.exe"
+"b"="notepad.exe"
+"c"="code.exe"
+"d"="notepad++.exe"
+"e"="sublime_text.exe"
+"f"="atom.exe"
+"g"="pycharm64.exe"
+"h"="vscode.exe"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pcsj\OpenWithProgids]
+"PyCppSQLJSFile"=hex(0): 
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pcsj\UserChoice]
+"Progid"="PyCppSQLJSFile"
+"Hash"="YourHashHere"
+"HashAlg"="SHA1"
+
+; Additional File Type Information
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pcsj\PropertyHandler]
+@="{8895b1c6-b41f-4c1c-a562-0d564250836f}"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pcsj\PreviewHandler]
+@="{8895b1c6-b41f-4c1c-a562-0d564250836f}" 
